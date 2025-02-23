@@ -1,0 +1,71 @@
+Sentence Pair Generator
+
+Overview
+
+This project is designed to generate sentence pairs based on tag sequences and a lexicon. It creates "good" and "bad" sentences by matching words to specific tags and ensuring variety in the generated output. The code is particularly suited for tasks that require comparing variations of sentences for linguistic or AI applications.
+
+Features
+
+- Load tag sequences: Reads pairs of "good" and "bad" sequences from a CSV file.
+- Load lexicon: Reads words and their associated tags from a CSV file.
+- Verb matching: Matches singular and plural verb forms based on their roots.
+- Unique word usage: Ensures that word variety is maximized across generated sentence pairs.
+- Error handling and logging: Uses logging to track errors and warnings.
+
+Prerequisites
+
+- Python 3.7+
+- Required packages:
+  - pandas
+
+To install the required packages, run:
+
+pip install pandas
+
+File Requirements
+
+Lexicon File
+The lexicon file must be a CSV with two columns:
+- Word: The word to be used in the sentence generation.
+- Tag: The associated tag for the word.
+
+Tag Sequences File
+The tag sequences file must be a CSV with two columns:
+- Good_Sequence: A sequence of tags representing a "good" sentence.
+- Bad_Sequence: A sequence of tags representing a "bad" sentence.
+
+Usage
+
+1. Set the file paths for the lexicon and tag sequences:
+   lexicon_file = '/path/to/your/lexicon.csv'
+   tag_sequences_file = '/path/to/your/tag_sequences.csv'
+   
+2. Configure the number of sentence pairs to generate:
+   total_pairs_to_generate = 120
+
+3. Run the script:
+   python your_script.py
+
+Output
+
+The script generates and prints pairs of "good" and "bad" sentences, along with their corresponding sequences. If it cannot generate the specified number of unique pairs, a warning will be logged.
+
+Example Output
+
+Generated Sentence Pairs:
+
+Pair 1:
+Good: Il gatto salta sopra il muro
+Bad: Il gatti salto sopra il muro
+Good Sequence: NOUN₁ VERB₂ DET₃ NOUN₄
+Bad Sequence: NOUN₁ VERB₂ DET₃ NOUN₄
+
+Logging
+
+The script uses logging to display messages:
+- ERROR: Critical issues that stop the program.
+- WARNING: Issues that might affect output but allow the program to continue.
+- DEBUG: More detailed messages for troubleshooting (disabled by default).
+
+To enable debug-level logging, modify the following line:
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
